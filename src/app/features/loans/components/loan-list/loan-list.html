@@ -5,13 +5,13 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    Borrower Name
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Principal Amount
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Current Balance
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Borrower Name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Duration Months
@@ -33,20 +33,20 @@
         <tbody>
           @for (loan of loans; track loan.loanId) {
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="px-6 py-4 font-medium text-gray-900">
+                    {{ loan.borrowerName }}
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ loan.principal | currency:'S/':'symbol':'1.2-2' }}
-                </th>
-                <td class="px-6 py-4">
-                    {{ loan.currentBalance | currency:'S/':'symbol':'1.2-2' }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ loan.borrowerName }}
+                    {{ loan.currentBalance | currency:'S/':'symbol':'1.2-2' }}
                 </td>
                  <td class="px-6 py-4">
                     {{ loan.durationMonths }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ loan.interestRate / 100 | percent:'1.2-2' }}
+                    {{ loan.interestRate | percent:'1.0-2' }}
                 </td>
                 <td class="px-6 py-4">
                     {{ loan.totalPayment | currency:'S/':'symbol':'1.2-2' }}
