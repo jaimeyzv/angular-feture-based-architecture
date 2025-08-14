@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoanListModel } from '../models/loan-list.model';
 import { LoanService } from '../services/loan-service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './loan-list.component.html',
   styleUrl: './loan-list.component.scss',
 })
-export class LoanListComponent {
+export class LoanListComponent implements OnInit {
   loans: LoanListModel[] = [];
 
   constructor(

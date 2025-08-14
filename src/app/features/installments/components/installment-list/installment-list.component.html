@@ -1,26 +1,15 @@
-
-
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Borrower Name
+                    Installment Number
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Principal Amount
+                    Amount
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Current Balance
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Duration Months
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Interest Rate
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Total Payment
+                    Due Date
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Status
@@ -31,38 +20,28 @@
             </tr>
         </thead>
         <tbody>
-          @for (loan of loans; track loan.loanId) {
+          @for (installment of installments; track installment.installmentId) {
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4 font-medium text-gray-900">
-                    {{ loan.borrowerName }}
+                    {{ installment.installmentNumber }}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ loan.principal | currency:'S/':'symbol':'1.2-2' }}
+                    {{ installment.amount | currency:'S/':'symbol':'1.2-2' }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ loan.currentBalance | currency:'S/':'symbol':'1.2-2' }}
-                </td>
-                 <td class="px-6 py-4">
-                    {{ loan.durationMonths }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ loan.interestRate | percent:'1.0-2' }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ loan.totalPayment | currency:'S/':'symbol':'1.2-2' }}
+                    {{ installment.dueDate }}
                 </td>
                 <td class="px-6 py-4">
                      <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
                           [ngClass]="{
-                            'bg-green-100 text-green-800': loan.status === 'Paid',
-                            'bg-yellow-100 text-yellow-800': loan.status === 'Active',
-                            'bg-red-100 text-red-800': loan.status === 'Overdue'
+                            'bg-green-100 text-green-800': installment.isPaid,
+                            'bg-yellow-100 text-yellow-800': !installment.isPaid
                           }">
-                      {{ loan.status }}
+                      {{ installment.isPaid ? 'Paid' : 'Pending' }}
                     </span>
                 </td>
                 <td class="px-6 py-4">
-                    <a [routerLink]="['/loans', loan.loanId, 'installments']" class="font-medium text-blue-600 hover:underline">Installments</a>
+                    <a [routerLink]="['/loans', installment.loanId, 'installments']" class="font-medium text-blue-600 hover:underline">Pay</a>
                 </td>
             </tr>
           } @empty {
@@ -70,4 +49,24 @@
           }
         </tbody>
     </table>
+</div>
+<br>
+<div class="mb-4">
+  <a
+    [routerLink]="['/loans']"
+    class="inline-flex items-center px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md shadow-sm transition-colors duration-200"
+  >
+    <!-- Heroicon: Arrow Left -->
+    <svg
+      class="w-4 h-4 mr-2"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+    </svg>
+    Back to Loans
+  </a>
 </div>

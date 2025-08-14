@@ -4,14 +4,22 @@ import { App } from './app/app';
 import { provideRouter, Routes } from '@angular/router';
 import { LoanListComponent } from './app/features/loans/components/loan-list/loan-list.component';
 import { LoanCreateComponent } from './app/features/loans/components/loan-create/loan-create.component';
+import { InstallmentListComponent } from './app/features/installments/components/installment-list/installment-list.component';
+import { InstallmentPayComponent } from './app/features/installments/components/installment-pay/installment-pay.component';
 
 const routes: Routes = [
   {
-    path: '',
-    //component: App,
+    path: 'loans',
     children: [
-      { path: 'loans', component: LoanListComponent },
-      { path: 'loans/create', component: LoanCreateComponent },
+      { path: '', component: LoanListComponent },
+      { path: 'create', component: LoanCreateComponent },
+      {
+        path: ':loanId', // /loans/:loanId
+        children: [
+          { path: 'installments', component: InstallmentListComponent }, // /loans/:loanId/installments
+          { path: 'installments/:installmentId/pay', component: InstallmentPayComponent },
+        ],
+      },
       { path: '', redirectTo: 'loans', pathMatch: 'full' }, // default redirect
     ],
   },
