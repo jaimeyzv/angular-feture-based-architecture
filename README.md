@@ -8,13 +8,13 @@ This project showcases how to structure a modern Angular application using **Fea
 
 <p align="center">
   <a 
-    href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" 
+    href="https://v20.angular.dev/overview" 
     target="blank"
   >
     <img 
-      src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg"
+      src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*AKeww522_kpUoxEc"
       width="75%" 
-      alt="Nest Logo" 
+      alt="Angular v20 Logo" 
     />
   </a>
 </p>
