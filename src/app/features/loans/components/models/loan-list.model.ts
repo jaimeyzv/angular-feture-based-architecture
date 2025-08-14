@@ -1,4 +1,4 @@
-export interface LoanList {
+export interface LoanListModel {
   loanId: number;
   principal: number;
   currentBalance: number;
