@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
+import { LoanListModel } from '../models/loan-list.model';
 import { LoanService } from '../services/loan-service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { LoanListModel } from '../models/loan-list.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loan-list',
-  imports: [CommonModule],
-  templateUrl: './loan-list.html',
-  styleUrl: './loan-list.scss',
+  imports: [CommonModule, RouterModule],
+  templateUrl: './loan-list.component.html',
+  styleUrl: './loan-list.component.scss',
 })
-export class LoanList {
+export class LoanListComponent {
   loans: LoanListModel[] = [];
 
   constructor(

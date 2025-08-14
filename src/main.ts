@@ -1,17 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
-import { LoadCreate } from './app/features/loans/components/load-create/load-create';
 import { provideRouter, Routes } from '@angular/router';
-import { LoanList } from './app/features/loans/components/loan-list/loan-list';
+import { LoanListComponent } from './app/features/loans/components/loan-list/loan-list.component';
+import { LoanCreateComponent } from './app/features/loans/components/loan-create/loan-create.component';
 
 const routes: Routes = [
   {
     path: '',
     //component: App,
     children: [
-      { path: 'loans', component: LoanList },
-      { path: 'loans/create', component: LoadCreate },
+      { path: 'loans', component: LoanListComponent },
+      { path: 'loans/create', component: LoanCreateComponent },
       { path: '', redirectTo: 'loans', pathMatch: 'full' }, // default redirect
     ],
   },

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadCreate } from './load-create';
+import { LoanListComponent } from './loan-list.component';
 
-describe('LoadCreate', () => {
-  let component: LoadCreate;
-  let fixture: ComponentFixture<LoadCreate>;
+describe('LoanListComponent', () => {
+  let component: LoanListComponent;
+  let fixture: ComponentFixture<LoanListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoadCreate]
+      imports: [LoanListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LoadCreate);
+    fixture = TestBed.createComponent(LoanListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
