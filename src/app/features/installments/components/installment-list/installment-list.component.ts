@@ -53,6 +53,14 @@ export class InstallmentListComponent implements OnInit {
         this.installmentService.payInstallment(this.loanId, this.selectedInstallment.installmentId)
       );
 
+      const now = new Date();
+
+      this.installments = this.installments.map((i) =>
+        i.installmentId === this.selectedInstallment!.installmentId
+          ? { ...i, isPaid: true, paymentDate: now } // update fields you show in the table
+          : i
+      );
+
       this.showConfirm = false;
       this.selectedInstallment = null;
     } catch (err) {
