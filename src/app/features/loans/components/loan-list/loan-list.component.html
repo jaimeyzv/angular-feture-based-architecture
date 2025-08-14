@@ -1,5 +1,3 @@
-
-
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -11,16 +9,16 @@
                     Principal Amount
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Current Balance
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Duration Months
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Interest Rate
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Total Payment
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Current Balance
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Duration Months
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Status
@@ -40,16 +38,16 @@
                     {{ loan.principal | currency:'S/':'symbol':'1.2-2' }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ loan.currentBalance | currency:'S/':'symbol':'1.2-2' }}
-                </td>
-                 <td class="px-6 py-4">
-                    {{ loan.durationMonths }}
-                </td>
-                <td class="px-6 py-4">
                     {{ loan.interestRate | percent:'1.0-2' }}
                 </td>
                 <td class="px-6 py-4">
                     {{ loan.totalPayment | currency:'S/':'symbol':'1.2-2' }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ loan.currentBalance | currency:'S/':'symbol':'1.2-2' }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ loan.durationMonths }}
                 </td>
                 <td class="px-6 py-4">
                      <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
@@ -70,4 +68,24 @@
           }
         </tbody>
     </table>
+</div>
+<br>
+<div class="mb-4">
+  <a
+    [routerLink]="['/loans/create']"
+    class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md shadow-sm transition-colors duration-200"
+  >
+    <!-- Heroicon: Arrow Left -->
+    <svg
+      class="w-4 h-4 mr-2"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+    </svg>
+    Create New Loan
+  </a>
 </div>
