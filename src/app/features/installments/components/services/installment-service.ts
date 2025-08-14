@@ -15,4 +15,9 @@ export class InstallmentService {
     console.log(url);
     return this.http.get<{ installments: InstallmentListModel[] }>(url);
   }
+
+  payInstallment(loanId: number, installmentId: number): Observable<any> {
+    const url = `${this.baseUrl}${loanId}/installments/${installmentId}`;
+    return this.http.patch(url, null);
+  }
 }
