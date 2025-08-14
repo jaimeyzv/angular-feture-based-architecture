@@ -2,9 +2,9 @@
 
 ## 📝 Overview
 
-Angular v20 reinforces the shift toward a more modular, scalable, and maintainable development model by embracing **standalone components** and promoting a **feature-based architecture**. This modern approach streamlines the developer experience, enhances performance, and encourages better separation of concerns.
+Angular v20 continues to evolve toward a more **modular**, **scalable**, and **maintainable** application model by embracing **standalone components** and promoting a feature-based architectural approach. These advancements streamline the development process, improve runtime performance, and foster a clear separation of concerns.
 
-This project demonstrates how to structure an Angular application using **Feature-Based Architecture**, while integrating **Tailwind CSS** to deliver a sleek, responsive UI with a focus on great user experience. It aims to serve as a reference implementation for developers seeking clean and scalable frontend solutions.
+This project showcases how to structure a modern Angular application using **Feature-Based Architecture**, integrated with **Tailwind CSS** for building a responsive and visually appealing user interface. It serves as a reference implementation for developers aiming to build maintainable, enterprise-grade frontend applications using the latest Angular standards.
 
 <p align="center">
   <a 
@@ -22,18 +22,14 @@ This project demonstrates how to structure an Angular application using **Featur
 
 ## 🚀 Project Purpose
 
-This sample application represents a simplified **Online Loan Management System**, enabling the following core features:
+This sample application represents a simplified **Online Loan Management System** that allows users to:
 
-Register borrowers and their respective loans.
+- Register borrowers and assign loans.
+- Track monthly loan installment payments.
+- View outstanding and completed installments per loan.
+- Calculate total profit generated from issued loans.
 
-Track monthly installment payments.
-
-Display outstanding vs. completed installments for each loan.
-
-Calculate the total profit generated from all loans.
-
-Beyond showcasing Angular 20 capabilities, this project demonstrates how to implement **Clean Architecture principles** in a frontend context, emphasizing modular design, testability, and separation of concerns.
-
+While demonstrating Angular 20 capabilities, this project also illustrates how to apply **Clean Architecture principles** in a frontend application — emphasizing modular design, testability, and loose coupling between components and services.
 ## 📁 Project Structure
 
 ```bash
@@ -83,16 +79,16 @@ Beyond showcasing Angular 20 capabilities, this project demonstrates how to impl
 └── tsconfig.spec.json
 ```
 
-This structure follows a domain-driven, modular architecture, making the codebase easier to scale, test, and maintain.
+This structure follows a feature-based, domain-oriented architecture, making the application easier to navigate, extend, and test. Each feature is self-contained, promoting high cohesion and low coupling — key principles in scalable frontend systems.
 
 ## 🔗 Backend Integration
-This frontend is designed to work seamlessly with the following .NET 9 backend, forming a full-stack, production-grade application
+This frontend pairs seamlessly with a companion backend project developed using **.NET 9**, forming a complete full-stack solution for loan management.
 
 - [Online Loan Backend (NET 9)](https://github.com/jaimeyzv/dotnet-clean-architecture)
 
 ## 👤 About me
 
-Hi, I'm **Jaime Zamora**, a Software Engineer with over 13 years of experience designing and building scalable, high-quality systems across diverse industries. I’m passionate about applying **Clean Architecture** principles, writing maintainable code, and sharing my knowledge with the developer community.
+Hi, I'm **Jaime Zamora**, a Software Engineer with over 13 years of experience designing and delivering scalable, high-quality systems across various industries. I'm passionate about Clean Architecture, building maintainable codebases, and sharing best practices with the developer community.
 
 📫 Let’s connect:
 
