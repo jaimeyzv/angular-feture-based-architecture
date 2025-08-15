@@ -16,7 +16,6 @@ export class InstallmentListComponent implements OnInit {
   isProcessing = false;
   loanId!: number;
   errorMessage!: string;
-  today: Date = new Date();
   selectedInstallment: InstallmentListModel | null = null;
   installments: InstallmentListModel[] = [];
 
