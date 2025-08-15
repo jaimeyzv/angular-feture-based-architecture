@@ -6,4 +6,5 @@ export interface InstallmentListModel {
   dueDate: Date;
   paymentDate: Date;
   isPaid: boolean;
+  isPastDue: boolean;
 }

@@ -47,9 +47,12 @@
                      <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
                           [ngClass]="{
                             'bg-green-100 text-green-800': installment.isPaid,
-                            'bg-yellow-100 text-yellow-800': !installment.isPaid
+                            'bg-red-100 text-red-800': !installment.isPaid && installment.isPastDue,
+                            'bg-yellow-100 text-yellow-800': !installment.isPaid && !installment.isPastDue
                           }">
-                      {{ installment.isPaid ? 'Paid' : 'Pending' }}
+                      {{ installment.isPaid
+                          ? 'Paid'
+                          : (installment.isPastDue ? 'Overdue' : 'Pending') }}
                     </span>
                 </td>
                 <td class="px-6 py-4">
