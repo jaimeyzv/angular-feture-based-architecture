@@ -6,6 +6,7 @@ export interface LoanListModel {
   durationMonths: number;
   interestRate: number;
   totalPayment: number;
+  repaymentModality: string;
   status: string;
   overdueCount: number;
 }

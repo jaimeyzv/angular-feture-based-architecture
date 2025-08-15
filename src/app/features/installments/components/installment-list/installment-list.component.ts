@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { InstallmentListModel } from '../models/InstallmentListModel';
+import { InstallmentListModel } from '../models/Installment-list.model';
 import { InstallmentService } from '../services/installment-service';
 import { firstValueFrom } from 'rxjs';
 
@@ -57,7 +57,7 @@ export class InstallmentListComponent implements OnInit {
 
       this.installments = this.installments.map((i) =>
         i.installmentId === this.selectedInstallment!.installmentId
-          ? { ...i, isPaid: true, paymentDate: now } // update fields you show in the table
+          ? { ...i, status: 'Paid', paymentDate: now } // update fields you show in the table
           : i
       );
 

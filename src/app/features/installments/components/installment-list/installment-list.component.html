@@ -26,37 +26,37 @@
           @for (installment of installments; track installment.installmentId)
           {
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4 font-medium text-gray-900">
-                    {{ installment.installmentNumber }}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ installment.amount | currency:'S/':'symbol':'1.2-2' }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ installment.dueDate | date:'dd/MM/yyyy' }}
-                </td>
-                <td class="px-6 py-4">
-                    <ng-container *ngIf="installment.paymentDate; else notDone">
-                      {{ installment.paymentDate | date:'dd/MM/yyyy' }}
-                    </ng-container>
-                    <ng-template #notDone>
-                      <span class="italic text-gray-500">Not done yet</span>
-                    </ng-template>
-                </td>
-                <td class="px-6 py-4">
-                     <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
-                          [ngClass]="{
-                            'bg-green-100 text-green-800': installment.isPaid,
-                            'bg-red-100 text-red-800': !installment.isPaid && installment.isPastDue,
-                            'bg-yellow-100 text-yellow-800': !installment.isPaid && !installment.isPastDue
-                          }">
-                      {{ installment.isPaid
-                          ? 'Paid'
-                          : (installment.isPastDue ? 'Overdue' : 'Pending') }}
-                    </span>
-                </td>
-                <td class="px-6 py-4">
-                  <ng-container *ngIf="!installment.isPaid; else paidAction">
+              <td class="px-6 py-4 font-medium text-gray-900">
+                  {{ installment.installmentNumber }}
+              </td>
+              <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{ installment.amount | currency:'S/':'symbol':'1.2-2' }}
+              </td>
+              <td class="px-6 py-4">
+                  {{ installment.dueDate | date:'dd MMMM yyyy' }}
+              </td>
+              <td class="px-6 py-4">
+                  <ng-container *ngIf="installment.paymentDate; else notDone">
+                    {{ installment.paymentDate | date:'dd/MM/yyyy' }}
+                  </ng-container>
+                  <ng-template #notDone>
+                    <span class="italic text-gray-500">Not done yet</span>
+                  </ng-template>
+              </td>
+              <td class="px-6 py-4">
+                <span
+                  class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
+                  [ngClass]="{
+                    'bg-green-100 text-green-800': installment.status === 'Paid',
+                    'bg-red-100 text-red-800': installment.status === 'Overdue',
+                    'bg-yellow-100 text-yellow-800': installment.status === 'Pending'
+                  }"
+                >
+                  {{ installment.status }}
+                </span>
+              </td>
+              <td class="px-6 py-4">
+                <ng-container *ngIf="installment.status !== 'Paid'; else paidAction">
                   <a
                     (click)="openConfirm(installment)"
                     class="font-medium text-blue-600 hover:underline cursor-pointer"
@@ -67,7 +67,7 @@
                 <ng-template #paidAction>
                   <span class="italic text-gray-500">Already paid</span>
                 </ng-template>
-                </td>
+              </td>
             </tr>
           }
           @empty {

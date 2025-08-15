@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InstallmentListModel } from '../models/InstallmentListModel';
+import { InstallmentListModel } from '../models/Installment-list.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
