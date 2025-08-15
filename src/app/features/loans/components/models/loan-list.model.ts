@@ -7,4 +7,5 @@ export interface LoanListModel {
   interestRate: number;
   totalPayment: number;
   status: string;
+  overdueCount: number;
 }

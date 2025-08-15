@@ -20,7 +20,7 @@
                 <th scope="col" class="px-6 py-3">
                     Duration Months
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 text-center">
                     Status
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -50,7 +50,9 @@
                     {{ loan.durationMonths }}
                 </td>
                 <td class="px-6 py-4">
-                     <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
+                  <div class="flex items-center justify-center space-x-2">
+                    <!-- Status -->
+                    <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
                           [ngClass]="{
                             'bg-green-100 text-green-800': loan.status === 'Paid',
                             'bg-yellow-100 text-yellow-800': loan.status === 'Active',
@@ -58,6 +60,16 @@
                           }">
                       {{ loan.status }}
                     </span>
+
+                    <!-- Overdue Count - shown only when status is Overdue -->
+                    <span *ngIf="loan.status === 'Overdue'"
+                          class="inline-flex items-center justify-center rounded-full px-2 py-0.5 text-xs font-medium"
+                          [ngClass]="{
+                            'bg-red-100 text-red-800': loan.overdueCount > 0
+                          }">
+                      {{ loan.overdueCount }}
+                    </span>
+                  </div>
                 </td>
                 <td class="px-6 py-4">
                     <a [routerLink]="['/loans', loan.loanId, 'installments']" class="font-medium text-blue-600 hover:underline">Installments</a>
