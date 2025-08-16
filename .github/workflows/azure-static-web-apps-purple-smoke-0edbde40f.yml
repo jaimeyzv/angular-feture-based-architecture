@@ -20,50 +20,33 @@ jobs:
           submodules: true
           lfs: false
 
-      # 1) Use Node >= 20.19 (Angular 20 requirement)
+      # 1) Angular 20 needs Node >= 20.19
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.19.0'
 
-      # 2) Build Angular on the runner (not inside SWA/Oryx)
+      # 2) Build on the runner (NOT inside Oryx)
       - name: Install dependencies
         run: npm ci
 
       - name: Build Angular app
         run: npm run build
 
-      # (optional) sanity check — see what was produced
-      - name: List build output
+      # (Optional) sanity check
+      - name: Verify build output
         run: |
-          echo "Contents of dist:"
-          ls -la dist || true
-          echo "index.html paths:"
+          echo "dist tree:"
           find dist -maxdepth 3 -type f -name index.html -print
 
-      # 3) Deploy prebuilt artifacts — SKIP APP BUILD
+      # 3) Deploy: point SWA to the built folder itself
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
           action: "upload"
-          # app_location stays at repo root so SWA can pick up the config file there
-          app_location: "/"
-          # point to the built files folder
-          app_artifact_location: "dist/online-loan-management-system-ui/browser"
-          # prevent Oryx from rebuilding with Node 18
+          app_location: "dist/online-loan-management-system-ui/browser"  # <-- contains index.html
           skip_app_build: true
-          # tell SWA where the staticwebapp.config.json is
+          # Keep config at repo root (optional)
           config_file_location: "/"
-          api_location: ""  # no Functions API
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
-          action: "close"
+          api_location: ""
