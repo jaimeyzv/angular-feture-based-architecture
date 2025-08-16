@@ -24,12 +24,15 @@ This project showcases how to structure a modern Angular application using **Fea
 
 This sample application represents a simplified **Online Loan Management System** that allows users to:
 
-- Register borrowers and assign loans.
-- Track monthly loan installment payments.
-- View outstanding and completed installments per loan.
-- Calculate total profit generated from issued loans.
+This sample application demonstrates a simplified **Online Loan Management System** designed to help manage and monitor loan operations.  
 
-While demonstrating Angular 20 capabilities, this project also illustrates how to apply **Clean Architecture principles** in a frontend application — emphasizing modular design, testability, and loose coupling between components and services.
+With this system, users can:
+
+- Register borrowers and assign new loans.  
+- Track loan installments with flexible repayment schedules (e.g., **Monthly**, **Weekly**, or **Every 15 Days**).  
+- Monitor outstanding and completed installments for each loan.  
+- Calculate the total profit generated from issued loans.  
+- Stay informed about overdue installments and identify delinquent loans. 
 
 <p align="center">
 	<img 
@@ -38,6 +41,9 @@ While demonstrating Angular 20 capabilities, this project also illustrates how t
 		alt="Online Loan Management System - Demo" 
 	/>
 </p>
+
+While demonstrating Angular 20 capabilities, this project also illustrates how to apply **Clean Architecture principles** in a frontend application — emphasizing modular design, testability, and loose coupling between components and services.
+
 
 ## 📁 Project Structure
 
