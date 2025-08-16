@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoanListModel } from '../models/loan-list.model';
 import { LoanCreateModel } from '../models/loan-create.model';
-import { environment } from '../../../../../environments/environment.ts';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
