@@ -2,31 +2,31 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
 
-      # 👇 Ensure Node.js 20.19+ (required by Angular 20)
+      # ✅ Force Node 20.19+ so Angular 20 builds fine
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.19.0'
 
-      # 👇 Install and build Angular app
+      # ✅ Build on the runner (NOT inside the SWA action)
       - name: Install dependencies
         run: npm ci
         working-directory: ./
@@ -35,16 +35,17 @@ jobs:
         run: npm run build
         working-directory: ./
 
-      # 👇 Deploy the built files
+      # ✅ Upload prebuilt artifacts; SKIP Oryx build (which uses Node 18)
       - name: Deploy to Azure Static Web Apps
-        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/" 
-          output_location: "dist/online-loan-management-system-ui/browser"
+          app_location: "/"                                # project root
+          skip_app_build: true                             # <<— KEY LINE
+          app_artifact_location: "dist/online-loan-management-system-ui/browser"  # <<— use built folder
+          # (Do NOT set output_location when skip_app_build=true)
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -52,7 +53,6 @@ jobs:
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
-        id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
