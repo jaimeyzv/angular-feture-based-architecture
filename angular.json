@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "online-loan-ui": {
+    "online-loan-management-system-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -48,6 +48,13 @@
                   "maximumError": "8kB"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
               "outputHashing": "all"
             },
             "development": {
@@ -62,10 +69,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "online-loan-ui:build:production"
+              "buildTarget": "online-loan-management-system-ui:build:production"
             },
             "development": {
-              "buildTarget": "online-loan-ui:build:development"
+              "buildTarget": "online-loan-management-system-ui:build:development"
             }
           },
           "defaultConfiguration": "development"

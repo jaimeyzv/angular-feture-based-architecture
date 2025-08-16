@@ -8,5 +8,5 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('online-loan-ui');
+  protected readonly title = signal('online-loan-management-system-ui');
 }

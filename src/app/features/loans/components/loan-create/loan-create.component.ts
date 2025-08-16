@@ -87,7 +87,6 @@ export class LoanCreateComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.loanForm.valid) {
-      console.log('onSubmit: ', this.loanForm.value);
       this.loanService.createLoan(this.loanForm.value).subscribe({
         next: () => this.router.navigate(['/loans']),
         error: (err) => {

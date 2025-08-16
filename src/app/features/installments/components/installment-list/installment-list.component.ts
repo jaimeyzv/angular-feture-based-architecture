@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { InstallmentListModel } from '../models/Installment-list.model';
 import { InstallmentService } from '../services/installment-service';
 import { firstValueFrom } from 'rxjs';
@@ -19,11 +19,7 @@ export class InstallmentListComponent implements OnInit {
   selectedInstallment: InstallmentListModel | null = null;
   installments: InstallmentListModel[] = [];
 
-  constructor(
-    private installmentService: InstallmentService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private installmentService: InstallmentService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loanId = Number(this.route.snapshot.paramMap.get('loanId'));
