@@ -34,7 +34,7 @@ While demonstrating Angular 20 capabilities, this project also illustrates how t
 <p align="center">
 	<img 
 		src="https://github.com/jaimeyzv/angular-feture-based-architecture/blob/main/.project-ui-video/Online%20Loan%20Management%20System.gif"
-		width="75%" 
+		width="100%" 
 		alt="Online Loan Management System - Demo" 
 	/>
 </p>
