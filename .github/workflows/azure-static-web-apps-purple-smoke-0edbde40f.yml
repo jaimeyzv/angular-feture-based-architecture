@@ -29,6 +29,7 @@ jobs:
       # 2) Build Angular on the runner (not inside SWA/Oryx)
       - name: Install dependencies
         run: npm ci
+
       - name: Build Angular app
         run: npm run build
 
@@ -46,8 +47,14 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
           action: "upload"
-          app_location: "dist/online-loan-management-system-ui/browser"  # path that contains index.html
+          # app_location stays at repo root so SWA can pick up the config file there
+          app_location: "/"
+          # point to the built files folder
+          app_artifact_location: "dist/online-loan-management-system-ui/browser"
+          # prevent Oryx from rebuilding with Node 18
           skip_app_build: true
+          # tell SWA where the staticwebapp.config.json is
+          config_file_location: "/"
           api_location: ""  # no Functions API
 
   close_pull_request_job:
