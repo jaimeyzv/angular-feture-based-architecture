@@ -20,13 +20,12 @@ jobs:
           submodules: true
           lfs: false
 
-      # ✅ Force Node 20.19+ so Angular 20 builds fine
+      # Angular 20 requires Node >= 20.19
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.19.0'
 
-      # ✅ Build on the runner (NOT inside the SWA action)
       - name: Install dependencies
         run: npm ci
         working-directory: ./
@@ -35,25 +34,19 @@ jobs:
         run: npm run build
         working-directory: ./
 
-      # ✅ Upload prebuilt artifacts; SKIP Oryx build (which uses Node 18)
+      # (optional) show what's in dist to verify the folder
+      - name: List build output
+        run: |
+          echo "dist contents:"
+          ls -la dist || true
+          echo "index.html paths:"
+          find dist -maxdepth 3 -type f -name index.html -print
+
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/"                                # project root
-          skip_app_build: true                             # <<— KEY LINE
-          app_artifact_location: "dist/online-loan-management-system-ui/browser"  # <<— use built folder
-          # (Do NOT set output_location when skip_app_build=true)
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_SMOKE_0EDBDE40F }}
-          action: "close"
+          app_location: "/"   # repo root where package.json lives
+          skip_app_build: true
+          app_artifact_location: "dist/online-loan-management-system-ui/browser"
