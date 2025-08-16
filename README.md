@@ -30,6 +30,15 @@ This sample application represents a simplified **Online Loan Management System*
 - Calculate total profit generated from issued loans.
 
 While demonstrating Angular 20 capabilities, this project also illustrates how to apply **Clean Architecture principles** in a frontend application — emphasizing modular design, testability, and loose coupling between components and services.
+
+<p align="center">
+	<img 
+		src="https://github.com/jaimeyzv/angular-feture-based-architecture/blob/main/.project-ui-video/Online%20Loan%20Management%20System.gif"
+		width="75%" 
+		alt="Online Loan Management System - Demo" 
+	/>
+</p>
+
 ## 📁 Project Structure
 
 ```bash
