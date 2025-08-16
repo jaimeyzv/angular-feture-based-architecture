@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { LoanService } from '../services/loan-service';
+import { RepaymentModality } from '../models/repayment-modality.type';
 
 @Component({
   selector: 'app-loan-create',
@@ -21,6 +22,11 @@ export class LoanCreateComponent implements OnInit {
   loanForm!: FormGroup;
   errorMessage: string | null = null;
   submitted = false;
+  repaymentModalityOptions: Array<{ value: RepaymentModality; label: string }> = [
+    { value: RepaymentModality.Weekly, label: 'Weekly' },
+    { value: RepaymentModality.Every15Days, label: 'Every 15 days' },
+    { value: RepaymentModality.Monthly, label: 'Monthly' },
+  ];
 
   constructor(private fb: FormBuilder, private loanService: LoanService, private router: Router) {}
 
@@ -38,6 +44,7 @@ export class LoanCreateComponent implements OnInit {
           Validators.pattern(/^\d+$/), // only whole numbers allowed
         ],
       ],
+      repaymentModality: [null as RepaymentModality | null, Validators.required],
     });
   }
 

@@ -81,6 +81,27 @@ While demonstrating Angular 20 capabilities, this project also illustrates how t
 
 This structure follows a feature-based, domain-oriented architecture, making the application easier to navigate, extend, and test. Each feature is self-contained, promoting high cohesion and low coupling — key principles in scalable frontend systems.
 
+## 🅰️ How to Run the Angular Project
+
+1. **Install dependencies**  
+   Run the following command to install all required packages:
+
+	```bash
+	npm install
+	```
+2. **Configure the API base URL**	
+	Go to the services classes and update the Web API base URL.
+	Use the route provided by the [.NET 9 project](https://github.com/jaimeyzv/dotnet-clean-architecture) as the value. For example:
+	
+	```
+		private readonly apiUrl = "https://localhost:5001/api";
+	```
+3. **Run the Angular application**	
+	Start the dev server with:
+	```
+		ng serve
+	```
+	The app will be available at http://localhost:4200.
 ## 🔗 Backend Integration
 This frontend pairs seamlessly with a companion backend project developed using **.NET 9**, forming a complete full-stack solution for loan management.
 

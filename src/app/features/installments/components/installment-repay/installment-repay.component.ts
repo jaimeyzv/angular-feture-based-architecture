@@ -6,10 +6,10 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-installment-pay',
   imports: [RouterModule],
-  templateUrl: './installment-pay.component.html',
-  styleUrl: './installment-pay.component.scss',
+  templateUrl: './installment-repay.component.html',
+  styleUrl: './installment-repay.component.scss',
 })
-export class InstallmentPayComponent implements OnInit {
+export class InstallmentRepayComponent implements OnInit {
   installmentId!: number;
 
   constructor(
